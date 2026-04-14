@@ -36,7 +36,7 @@ Base de dados pública do BNDES de operações de financiamento não automática
 
 Base disponibilizada mensalmente através de um arquivo .csv.
 
-Através do arquivo 'datawarehouse_setup', as estruturas Catalog, Schema e Volume usadas neste projeto serão criados.
+Através do arquivo 'datawarehouse_setup', as estruturas Catalog, Schema, Volume e um Job Pipeline usados neste projeto serão criados automaticamente.
 
 Esse projeto pode ser executado de duas formas diferentes: processo único ou em 4 etapas.
 
@@ -55,10 +55,9 @@ Por fim, a job pode ser configurada para rodar automaticamente aguardando a atua
 - > Na etapa '01.bronze_table', o Schema da tabela bronze é imposto para garantir a qualidade das informações, os campos de CNPJ do cliente e da instituição financeira são anonimizados conforme exigido pela LGPD.
 - > Na etapa '02.silver_table', é adicionado um número sequencial ao contrato, a fim de separar os subcontratos, alguns campos que não serão utilizados são removidos e algumas nomenclaturas de campos ajustadas.
 - > Na etapa final '03.gold_table', é gerado um modelo analítico, sem dados pessoais identificáveis, apenas com características dos contratos, para gerar os dados necessários para alimentar o dashboard em PowerBI.
+- > Por fim a base 'data_warehouse.bndes.GOLD_LAYER_bndes_oper_finan_n_auto' é conectada à ferramenta PowerBi, para validar e utilizar os dados gerados nos passos anteriores.
 
-Por fim a base 'data_warehouse.bndes.GOLD_LAYER_bndes_oper_finan_n_auto' é conectada à ferramenta PowerBi, para validar e utilizar os dados gerados nos passos anteriores.
-
-## Segurança E continuidde
+## Segurança e continuidde
 
 Para garantir a segurança e a continuidade do processo, durante a etapa 00_FILE_INGEST, caso o arquivo mais recente não seja o esperado, as outras etapas de tratamento das bases não são executadas. 
 Nas etapas seguintes, no momento de carregamento das tabelas, é realizada uma comparação entre as referências para evitar a duplicação de informações já existentes.
