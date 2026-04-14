@@ -36,7 +36,7 @@ Base de dados pública do BNDES de operações de financiamento não automática
 
 Base disponibilizada mensalmente através de um arquivo .csv.
 
-Através do arquivo 'datawarehouse_setup', as estruturas Catalog, Schema, Volume e um Job Pipeline usados neste projeto serão criados automaticamente.
+Através do arquivo 'environment_setup', as estruturas Catalog, Schema, Volume e um Job Pipeline usados neste projeto serão criados automaticamente.
 
 Esse projeto pode ser executado de duas formas diferentes: processo único ou em 4 etapas.
 
